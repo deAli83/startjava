@@ -11,8 +11,7 @@ public class Cycle {
             System.out.println(i);
             i += 2;
         }
-        
-        System.out.println("Сумма нечетных чисел от 10 до 20");
+
         i = 10;
         int sumOdd = 0;
         do {
@@ -21,6 +20,6 @@ public class Cycle {
             }
             i++;
         } while (i <= 20);
-        System.out.println(sumOdd);
+        System.out.println("Сумма нечетных чисел от 10 до 20 = " + sumOdd);
     }
 }
