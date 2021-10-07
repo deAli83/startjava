@@ -4,22 +4,23 @@ public class Cycle {
         for (byte i = 0; i <= 20; i++) {
             System.out.println(i);
         }
+        
         System.out.println("Числа от-6 до 6 с дискретностью 2");
         byte i = -6;
         while (i <= 6) {
             System.out.println(i);
             i += 2;
         }
+        
+        System.out.println("Сумма нечетных чисел от 10 до 20");
         i = 10;
-        int oddsum = 0;
+        int sumOdd = 0;
         do {
             if (i % 2 == 0) {
-                oddsum = oddsum + i;
+                sumOdd +=i;
             }
             i++;
-        }
-        while (i <= 20);
-        System.out.println("Сумма нечетных чисел от 10 до 20");
-        System.out.println(oddsum);
+        } while (i <= 20);
+        System.out.println(sumOdd);
     }
 }
