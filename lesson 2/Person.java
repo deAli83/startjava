@@ -15,14 +15,14 @@ public class Person {
     }
 
     void run() {
-        System.out.println("running")
+        System.out.println("running");
     }
 
     void talk() {
-        System.out.println("talking")
+        System.out.println("talking");
     }
 
     void studyJava() {
-        System.out.println("studing Java")
+        System.out.println("studing Java");
     }
 }
