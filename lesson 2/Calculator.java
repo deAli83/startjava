@@ -1,119 +1,80 @@
-import java.util.Scanner;
-
 public class Calculator {
-    Scanner inputNumbers = new Scanner(System.in);
-    Scanner inputOperator = new Scanner(System.in);
 
     private int number1;
+    private int number2;
+    private String operator;
+    private int calculate;
+    private boolean conditionOperator;
 
     public int getNumber1() {
         return number1;
     }
 
-    public void setNumber1() {
-        number1 = inputNumbers.nextInt();
+    public void setNumber1(int number1) {
+        this.number1 = number1;
     }
-
-    private int number2;
 
     public int getNumber2() {
         return number2;
     }
 
-    public void setNumber2() {
-        number2 = inputNumbers.nextInt();
+    public void setNumber2(int number2) {
+        this.number2 = number2;
     }
-
-    private String operator;
 
     public String getOperator() {
         return operator;
     }
-    private int result;
-    private boolean condition;
 
-    public void setOperator() {
-        do {
-            operator = inputOperator.nextLine();
-            condition = false;
-            switch(operator) {
-                case "+" :
-                    break;
-                case "-" :
-                    break;
-                case "*" :
-                    break;
-                case "/" :
-                    break;
-                case "^" :
-                    break;
-                case "%" :
-                    break;
-                default:
-                    System.out.println("Введен некорректный знак. Введите: '+', '-', '*' , '/' , '^', '%'");
-                    condition = true;
-            }
-        } while (condition);
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
-    public int getResult() {
+    public boolean checkOperator() {
+        conditionOperator = false;
         switch(operator) {
             case "+" :
-                result = number1 + number2;
                 break;
             case "-" :
-                result = number1 - number2;
                 break;
             case "*" :
-                result = number1 * number2;
                 break;
             case "/" :
-                result = number1 / number2;
                 break;
             case "^" :
-                result = 1;
+                break;
+            case "%" :
+                break;
+            default:
+                System.out.println("Введен некорректный знак. Введите: '+', '-', '*' , '/' , '^', '%'");
+                conditionOperator = true;
+            }
+        return conditionOperator;
+    }
+
+    public int getCalculate() {
+        switch(operator) {
+            case "+" :
+                calculate = number1 + number2;
+                break;
+            case "-" :
+                calculate = number1 - number2;
+                break;
+            case "*" :
+                calculate = number1 * number2;
+                break;
+            case "/" :
+                calculate = number1 / number2;
+                break;
+            case "^" :
+                calculate = 1;
                 for (int count = 1; count <= number2; count++) {
-                    result = result * number1;
+                    calculate = calculate * number1;
                 }
                 break;
             case "%" :
-                result = number1 % number2;
+                calculate = number1 % number2;
         }
-        return result;
-    }
-
-    private String nextCalculation;
-
-    public String getNextCalculation() {
-        return nextCalculation;
-    }
-
-    private boolean conditionYN;
-
-    public boolean getConditionYN (){
-        switch(nextCalculation) {
-            case "yes":
-                conditionYN = true;
-                break;
-            case "no":
-                conditionYN = false;
-        }
-        return conditionYN;
-    }
-
-    public void setNextCalculation() {
-        do {
-            nextCalculation = inputOperator.nextLine();
-            condition = false;
-            switch(nextCalculation){
-                case("yes"):
-                    break;
-                case("no"):
-                    break;
-                default:
-                    System.out.println("Некорректное значение. Введите [yes/no]");
-                    condition = true;
-            }
-        } while (condition);
+        return calculate;
     }
 }
