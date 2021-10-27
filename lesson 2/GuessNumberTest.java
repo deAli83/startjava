@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class GuessNumberTest {
     public static void main(String[] args) {
         String name;
-        int playerNumber;
         String endGame;
         Scanner input = new Scanner(System.in);
         
@@ -13,23 +12,12 @@ public class GuessNumberTest {
 
         System.out.println("Введите имя второго игрока:");
         name = input.nextLine();
-        Player player2 = new Player (name);
+        Player player2 = new Player(name);
 
+        GuessNumber game = new GuessNumber(player1, player2);
         do {
-            System.out.println("Игрок " + player1.name + " введите число от 0 до 100:");
-            do {
-                player1.playerNumber = input.nextInt();
-            } while (player2.checkNumber(player1.playerNumber));
-
-            System.out.println("Игрок " + player2.name + " введите число от 0 до 100:");
-            do {
-                player2.playerNumber = input.nextInt();
-            } while (player2.checkNumber(player2.playerNumber));
-
-            GuessNumber game = new GuessNumber(player1, player2);
-            game.processGame();
+            game.launch();
             System.out.println("Хотите продолжить игру? [yes/no]:");
-            input.nextLine();
             boolean conditionYN = true;
             do {
                 endGame = input.nextLine();
