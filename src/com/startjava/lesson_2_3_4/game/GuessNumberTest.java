@@ -7,12 +7,10 @@ public class GuessNumberTest {
         Scanner input = new Scanner(System.in);
         
         System.out.println("Введите имя первого игрока:");
-        String name = input.nextLine();
-        Player player1 = new Player(name);
+        Player player1 = new Player(input.nextLine());
 
         System.out.println("Введите имя второго игрока:");
-        name = input.nextLine();
-        Player player2 = new Player(name);
+        Player player2 = new Player(input.nextLine());
 
         GuessNumber game = new GuessNumber(player1, player2);
 
