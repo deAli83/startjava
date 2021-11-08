@@ -22,6 +22,6 @@ public class CalculatorTest {
                     System.out.println("Введите [yes/no]:");
                 }
             } while (true);
-        } while(nextCalculation.equals("yes"));
+        } while (nextCalculation.equals("yes"));
     }
 }

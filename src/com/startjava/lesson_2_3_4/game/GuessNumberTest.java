@@ -26,7 +26,7 @@ public class GuessNumberTest {
                     System.out.println("Некорректное значение. Введите [yes/no]");
                 }
             } while (true);
-        } while(playerAnswer.equals("yes"));
+        } while (playerAnswer.equals("yes"));
     }
 
     private static void inputPlayerNames(int i) {

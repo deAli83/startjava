@@ -7,11 +7,11 @@ public class GuessNumber {
     private int secretNumber;
     private Player[] players = new Player[2];
     private boolean[] playersWin;
-    private int[] playersLastTry = new int [2];
+    private int[] playersLastTry = new int[2];
     Scanner input = new Scanner(System.in);
 
     public GuessNumber(Player[] players) {
-        for ( int i = 0; i < players.length; i++) {
+        for (int i = 0; i < players.length; i++) {
             this.players[i] = players[i];
         }
     }
@@ -63,7 +63,7 @@ public class GuessNumber {
         return false;
     }
 
-    public void printNumbers (int playerIndex, int count) {
+    public void printNumbers(int playerIndex, int count) {
         for (int i = 0; i <= count; i++) {
             System.out.print(players[playerIndex].getCurrentNumber(i) + " ");
         }

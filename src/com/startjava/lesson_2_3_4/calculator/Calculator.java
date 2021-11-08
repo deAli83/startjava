@@ -6,20 +6,20 @@ public class Calculator {
 
     public int calculate(String mathExpression) {
         calculateData = mathExpression.split(" ");
-        switch(calculateData[1]) {
-            case "+" :
+        switch (calculateData[1]) {
+            case "+":
                 return Math.addExact(Integer.parseInt(calculateData[0]), Integer.parseInt(calculateData[2]));
-            case "-" :
+            case "-":
                 return Math.subtractExact(Integer.parseInt(calculateData[0]), Integer.parseInt(calculateData[2]));
-            case "*" :
+            case "*":
                 return Math.multiplyExact(Integer.parseInt(calculateData[0]), Integer.parseInt(calculateData[2]));
-            case "/" :
+            case "/":
                 return Integer.parseInt(calculateData[0]) / Integer.parseInt(calculateData[2]);
-            case "^" :
+            case "^":
                 return (int) Math.pow(Integer.parseInt(calculateData[0]), Integer.parseInt(calculateData[2]));
-            case "%" :
+            case "%":
                 return Integer.parseInt(calculateData[0]) % Integer.parseInt(calculateData[2]);
-            default :
+            default:
                 return 0;
         }
     }
