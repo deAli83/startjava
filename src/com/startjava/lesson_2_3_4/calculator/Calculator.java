@@ -6,19 +6,21 @@ public class Calculator {
 
     public int calculate(String mathExpression) {
         calculateData = mathExpression.split(" ");
+        int number1 = Integer.parseInt(calculateData[0]);
+        int number2 = Integer.parseInt(calculateData[2]);
         switch (calculateData[1]) {
             case "+":
-                return Math.addExact(Integer.parseInt(calculateData[0]), Integer.parseInt(calculateData[2]));
+                return Math.addExact(number1, number2);
             case "-":
-                return Math.subtractExact(Integer.parseInt(calculateData[0]), Integer.parseInt(calculateData[2]));
+                return Math.subtractExact(number1, number2);
             case "*":
-                return Math.multiplyExact(Integer.parseInt(calculateData[0]), Integer.parseInt(calculateData[2]));
+                return Math.multiplyExact(number1, number2);
             case "/":
-                return Integer.parseInt(calculateData[0]) / Integer.parseInt(calculateData[2]);
+                return number1 / number2;
             case "^":
-                return (int) Math.pow(Integer.parseInt(calculateData[0]), Integer.parseInt(calculateData[2]));
+                return (int) Math.pow(number1, number2);
             case "%":
-                return Integer.parseInt(calculateData[0]) % Integer.parseInt(calculateData[2]);
+                return number1 % number2;
             default:
                 return 0;
         }

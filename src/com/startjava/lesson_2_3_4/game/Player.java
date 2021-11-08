@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
+    private int playerTry;
+    private boolean playerWin;
     private int[] numbers = new int[10];
 
     public Player(String name) {
@@ -19,16 +21,35 @@ public class Player {
     }
 
     public boolean setNumber(int number, int count) {
-        if (number >= 0 && number <= 100) {
-            numbers[count] = number;
-            return false;
-        } else {
-            System.out.println("Введено некорректное число: необходимо от 0 до 100 (включительно)");
+        if (number <= 0 || number >= 100) {
             return true;
         }
+        numbers[count] = number;
+        return false;
+    }
+
+    public int[] getNumbers() {
+        return Arrays.copyOf(numbers, playerTry + 1);
+    }
+
+    public int getPlayerTry() {
+        return playerTry;
+    }
+
+    public void setPlayerTry(int playerTry) {
+        this.playerTry = playerTry;
+    }
+
+    public boolean isPlayerWin() {
+        return playerWin;
+    }
+
+    public void setPlayerWin(boolean playerWin) {
+        this.playerWin = playerWin;
     }
 
     public void fillNumbers(int count) {
         Arrays.fill(numbers, 0, count, 0);
+        playerWin = false;
     }
 }

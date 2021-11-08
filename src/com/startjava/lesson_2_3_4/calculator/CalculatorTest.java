@@ -14,14 +14,9 @@ public class CalculatorTest {
             System.out.println(mathExpression + " = " + calculator.calculate(mathExpression));
 
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
-            do {
-                nextCalculation = input.nextLine();
-                if (nextCalculation.equals("yes") || nextCalculation.equals("no")) {
-                    break;
-                } else {
-                    System.out.println("Введите [yes/no]:");
-                }
-            } while (true);
-        } while (nextCalculation.equals("yes"));
+            if (!input.nextLine().equals("yes")) {
+                break;
+            }
+        } while (true);
     }
 }
