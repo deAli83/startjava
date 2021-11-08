@@ -1,18 +1,18 @@
-package com.startjava.lesson_2_3.game;
+package com.startjava.lesson_2_3_4.game;
 
 import java.util.Scanner;
 
 public class GuessNumberTest {
+    static Scanner input = new Scanner(System.in);
+    static Player[] players = new Player[2];
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        
-        System.out.println("Введите имя первого игрока:");
-        Player player1 = new Player(input.nextLine());
 
-        System.out.println("Введите имя второго игрока:");
-        Player player2 = new Player(input.nextLine());
+        for (int i = 0; i < 2; i++) {
+            inputPlayerNames(i);
+        }
 
-        GuessNumber game = new GuessNumber(player1, player2);
+        GuessNumber game = new GuessNumber(players);
 
         String playerAnswer;
         do {
@@ -27,5 +27,10 @@ public class GuessNumberTest {
                 }
             } while (true);
         } while(playerAnswer.equals("yes"));
+    }
+
+    private static void inputPlayerNames(int i) {
+        System.out.println("Введите имя " + (i + 1) + " игрока:");
+        players[i] = new Player(input.nextLine());
     }
 }

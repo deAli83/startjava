@@ -1,4 +1,4 @@
-package com.startjava.lesson_2_3.game;
+package com.startjava.lesson_2_3_4.game;
 
 import java.util.Arrays;
 
@@ -14,22 +14,21 @@ public class Player {
         return name;
     }
 
-    public int getElement(int count) {
+    public int getCurrentNumber(int count) {
         return numbers[count];
     }
 
-    public void setElement(int number, int count) {
-        numbers[count] = number;
-    }
-
-    public void fillNumbers (int count) {
-        Arrays.fill(numbers, 0, count, 0);
-    }
-
-    public void printNumbers (int count) {
-        for (int i = 0; i <= count; i++) {
-            System.out.print(numbers[i] + " ");
+    public boolean setNumber(int number, int count) {
+        if (number >= 0 && number <= 100) {
+            numbers[count] = number;
+            return false;
+        } else {
+            System.out.println("Введено некорректное число: необходимо от 0 до 100 (включительно)");
+            return true;
         }
-        System.out.println();
+    }
+
+    public void fillNumbers(int count) {
+        Arrays.fill(numbers, 0, count, 0);
     }
 }
