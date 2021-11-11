@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class GuessNumber {
     private int secretNumber;
+    private boolean win;
     private Player[] players = new Player[2];
     Scanner input = new Scanner(System.in);
 
@@ -22,44 +23,50 @@ public class GuessNumber {
         System.out.println("Число, загаданное компьютером = " + secretNumber);
 
         for (int count = 0; count < 10; count++) {
-            for (int playerIndex = 0; playerIndex < players.length; playerIndex++) {
-                if (!players[playerIndex].isPlayerWin()) {
-                    players[playerIndex].setPlayerTry(count);
-                    makeMove(playerIndex, count);
+            if (!win) {
+                for (int i = 0; i < players.length; i++) {
+                    if (!win) {
+                    players[i].setTryNumber(count);
+                    makeMove(players[i]);
+                    } else {
+                        break;
+                    }
                 }
+            } else {
+                win = false;
+                break;
             }
         }
 
-        for (int playerIndex = 0; playerIndex < players.length; playerIndex++) {
-            System.out.println(Arrays.toString(players[playerIndex].getNumbers()).replaceAll("[\\[|\\]|,]", ""));
-            players[playerIndex].fillNumbers(players[playerIndex].getPlayerTry());
+        for (int i = 0; i < players.length; i++) {
+            int[] numbers = players[i].getNumbers();
+            System.out.println(Arrays.toString(numbers).replaceAll("[\\[|\\]|,]", ""));
+            players[i].fillNumbers();
         }
     }
 
-    private void makeMove(int playerIndex, int count) {
-        System.out.print("Игрок " + players[playerIndex].getName() + " введите число от 0 до 100: ");
-        while (players[playerIndex].setNumber(input.nextInt(), count)) {
+    private void makeMove(Player player) {
+        System.out.print("Игрок " + player.getName() + " введите число от 0 до 100: ");
+        while (!player.setNumber(input.nextInt())) {
             System.out.println("Введено некорректное число: необходимо от 0 до 100 (включительно)");
         }
-        String name = players[playerIndex].getName();
-        int number = players[playerIndex].getCurrentNumber(count);
+        String name = player.getName();
+        int number = player.getCurrentNumber();
         System.out.println("Число игрока " + name + " = " + number);
 
-        if (compareNumbers(number, secretNumber, playerIndex)) {
-            System.out.println("Игрок " + name + " угадал число " + secretNumber + " с " + (count + 1) + " попытки");
-        } else if (count == 9) {
+        int tryNumber = player.getTryNumber();
+        if (compareNumbers(number)) {
+            System.out.println("Игрок " + name + " угадал число " + secretNumber + " с " + (tryNumber + 1) + " попытки");
+        } else if (tryNumber == 9) {
             System.out.println("У " + name + " закончились попытки");
         }
     }
 
-    private boolean compareNumbers(int playerNumber, int secretNumber, int playerIndex) {
+    private boolean compareNumbers(int playerNumber) {
         if (playerNumber == secretNumber) {
-            players[playerIndex].setPlayerWin(true);
-            return true;
-        } else if (playerNumber < secretNumber) {
-            System.out.println("Данное число меньше того, что загадал компьютер");
+            return win = true;
         } else {
-            System.out.println("Данное число больше того, что загадал компьютер");
+            System.out.println("Данное число " + ((playerNumber < secretNumber) ? "меньше " : "больше ") + "того, что загадал компьютер");
         }
         return false;
     }

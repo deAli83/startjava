@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int playerTry;
-    private boolean playerWin;
+    private int tryNumber;
     private int[] numbers = new int[10];
 
     public Player(String name) {
@@ -16,40 +15,31 @@ public class Player {
         return name;
     }
 
-    public int getCurrentNumber(int count) {
-        return numbers[count];
+    public int getCurrentNumber() {
+        return numbers[tryNumber];
     }
 
-    public boolean setNumber(int number, int count) {
-        if (number <= 0 || number >= 100) {
+    public boolean setNumber(int number) {
+        if (number >= 0 && number <= 100) {
+            numbers[tryNumber] = number;
             return true;
         }
-        numbers[count] = number;
         return false;
     }
 
     public int[] getNumbers() {
-        return Arrays.copyOf(numbers, playerTry + 1);
+        return Arrays.copyOf(numbers, tryNumber + 1);
     }
 
-    public int getPlayerTry() {
-        return playerTry;
+    public int getTryNumber() {
+        return tryNumber;
     }
 
-    public void setPlayerTry(int playerTry) {
-        this.playerTry = playerTry;
+    public void setTryNumber(int tryNumber) {
+        this.tryNumber = tryNumber;
     }
 
-    public boolean isPlayerWin() {
-        return playerWin;
-    }
-
-    public void setPlayerWin(boolean playerWin) {
-        this.playerWin = playerWin;
-    }
-
-    public void fillNumbers(int count) {
-        Arrays.fill(numbers, 0, count, 0);
-        playerWin = false;
+    public void fillNumbers() {
+        Arrays.fill(numbers, 0, tryNumber, 0);
     }
 }
