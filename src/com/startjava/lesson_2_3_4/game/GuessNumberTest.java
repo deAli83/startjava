@@ -13,11 +13,15 @@ public class GuessNumberTest {
 
         GuessNumber game = new GuessNumber(players);
 
+        game.launch();
+
         do {
-            game.launch();
             System.out.println("Хотите продолжить игру? [yes/no]:");
-            if (!input.nextLine().equals("yes")) {
+            String yesNo = input.nextLine();
+            if (yesNo.equals("no")) {
                 break;
+            } else if (yesNo.equals("yes")) {
+                game.launch();
             }
         } while (true);
     }
