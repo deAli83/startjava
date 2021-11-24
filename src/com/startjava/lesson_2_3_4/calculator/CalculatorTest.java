@@ -4,25 +4,27 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     static Scanner input = new Scanner(System.in);
-    static Calculator calculator = new Calculator();
 
     public static void main(String[] args) {
-        launch();
+        Calculator calculator = new Calculator();
+        String mathExpression;
         do {
-            String yesNo;
+            System.out.println("Введите математическое выражение: [число] [знак операции] [число]");
+            mathExpression = input.nextLine();
+            System.out.println(mathExpression + " = " + calculator.calculate(mathExpression));
+        } while (continuetion());
+    }
+
+    private static boolean continuetion() {
+        String yesNo;
+        do {
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
             yesNo = input.nextLine();
             if (yesNo.equals("no")) {
-                break;
+                return false;
             } else if (yesNo.equals("yes")) {
-                launch();
+                return true;
             }
         } while (true);
-    }
-
-    private static void launch() {
-        System.out.println("Введите математическое выражение: [число] [знак операции] [число]");
-        String mathExpression = input.nextLine();
-        System.out.println(mathExpression + " = " + calculator.calculate(mathExpression));
     }
 }

@@ -2,13 +2,13 @@ package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
 
-    private String[] calculateData;
+    private String[] mathData;
 
     public int calculate(String mathExpression) {
-        calculateData = mathExpression.split(" ");
-        int number1 = Integer.parseInt(calculateData[0]);
-        int number2 = Integer.parseInt(calculateData[2]);
-        switch (calculateData[1]) {
+        mathData = mathExpression.split(" ");
+        int number1 = Integer.parseInt(mathData[0]);
+        int number2 = Integer.parseInt(mathData[2]);
+        switch (mathData[1]) {
             case "+":
                 return Math.addExact(number1, number2);
             case "-":

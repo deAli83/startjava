@@ -41,5 +41,6 @@ public class Player {
 
     public void fillNumbers() {
         Arrays.fill(numbers, 0, tryNumber + 1, 0);
+        tryNumber = 0;
     }
 }

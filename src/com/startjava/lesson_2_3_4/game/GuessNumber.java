@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class GuessNumber {
     private int secretNumber;
-    private boolean win;
     private Player[] players = new Player[2];
     Scanner input = new Scanner(System.in);
 
@@ -23,11 +22,7 @@ public class GuessNumber {
         secretNumber = random.nextInt(101);
         System.out.println("Число, загаданное компьютером = " + secretNumber);
 
-        for (int count = 0; count < 10; count++) {
-            if (win) {
-                break;
-            }
-
+        for (int count = 0; count < 10 && !win; count++) {
             for (int i = 0; i < players.length; i++) {
                 if (makeMove(players[i], count)) {
                     win = true;
@@ -57,7 +52,7 @@ public class GuessNumber {
         if (compareNumbers(number)) {
             System.out.println("Игрок " + name + " угадал число " + secretNumber + " с " + (tryNumber + 1) + " попытки");
             return true;
-        } else if (tryNumber == 9) {
+        } if (tryNumber == 9) {
             System.out.println("У " + name + " закончились попытки");
         }
         return false;
