@@ -12,19 +12,15 @@ public class CalculatorTest {
             System.out.println("Введите математическое выражение: [число] [знак операции] [число]");
             mathExpression = input.nextLine();
             System.out.println(mathExpression + " = " + calculator.calculate(mathExpression));
-        } while (continuetion());
+        } while (checkNext().equals("yes"));
     }
 
-    private static boolean continuetion() {
+    private static String checkNext() {
         String yesNo;
         do {
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
             yesNo = input.nextLine();
-            if (yesNo.equals("no")) {
-                return false;
-            } else if (yesNo.equals("yes")) {
-                return true;
-            }
-        } while (true);
+        } while (!(yesNo.equals("no") | yesNo.equals("yes")));
+        return yesNo;
     }
 }

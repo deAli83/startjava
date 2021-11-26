@@ -30,12 +30,7 @@ public class GuessNumber {
                 }
             }
         }
-
-        for (int i = 0; i < players.length; i++) {
-            int[] numbers = players[i].getNumbers();
-            System.out.println(Arrays.toString(numbers).replaceAll("[\\[|\\]|,]", ""));
-            players[i].fillNumbers();
-        }
+        finish();
     }
 
     private boolean makeMove(Player player, int count) {
@@ -64,5 +59,13 @@ public class GuessNumber {
         }
         System.out.println("Данное число " + ((playerNumber < secretNumber) ? "меньше " : "больше ") + "того, что загадал компьютер");
         return false;
+    }
+
+    private void finish() {
+        for (int i = 0; i < players.length; i++) {
+            int[] numbers = players[i].getNumbers();
+            System.out.println(Arrays.toString(numbers).replaceAll("[\\[|\\]|,]", ""));
+            players[i].fillNumbers();
+        }
     }
 }

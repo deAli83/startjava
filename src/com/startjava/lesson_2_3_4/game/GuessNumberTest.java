@@ -7,32 +7,27 @@ public class GuessNumberTest {
     static Player[] players = new Player[2];
 
     public static void main(String[] args) {
-        for (int i = 0; i < players.length; i++) {
-            createPlayer(i);
-        }
-
+        createPlayers();
         GuessNumber game = new GuessNumber(players);
 
         do {
             game.launch();
-        } while (continuetion());
+        } while (checkNext().equals("yes"));
     }
 
-    private static void createPlayer(int i) {
-        System.out.println("Введите имя " + (i + 1) + " игрока:");
-        players[i] = new Player(input.nextLine());
+    private static void createPlayers() {
+        for (int i = 0; i < players.length; i++) {
+            System.out.println("Введите имя " + (i + 1) + " игрока:");
+            players[i] = new Player(input.nextLine());
+        }
     }
 
-    private static boolean continuetion() {
+    private static String checkNext() {
         String yesNo;
         do {
             System.out.println("Хотите продолжить игру? [yes/no]:");
             yesNo = input.nextLine();
-            if (yesNo.equals("no")) {
-                return false;
-            } else if (yesNo.equals("yes")) {
-                return true;
-            }
-        } while (true);
+        } while (!(yesNo.equals("no") | yesNo.equals("yes")));
+        return yesNo;
     }
 }
