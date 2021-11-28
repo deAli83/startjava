@@ -30,7 +30,7 @@ public class GuessNumber {
                 }
             }
         }
-        finish();
+        showNumbersPlayers();
     }
 
     private boolean makeMove(Player player, int count) {
@@ -61,7 +61,7 @@ public class GuessNumber {
         return false;
     }
 
-    private void finish() {
+    private void showNumbersPlayers() {
         for (int i = 0; i < players.length; i++) {
             int[] numbers = players[i].getNumbers();
             System.out.println(Arrays.toString(numbers).replaceAll("[\\[|\\]|,]", ""));
